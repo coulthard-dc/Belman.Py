@@ -21,12 +21,12 @@ def draw_table(A,flag):
         col=['Бюджет U'] #Формирование списка заголовков таблицы 
         for i in range(A.shape[1]-1):
             col.append('F'+str(i+1)) #Также формирование списка заголовков таблицы
-        table0=pt.PrettyTable() #Создание объекта класса PrettyTables
-        table0.field_names=col #Присвоение объекту значений заголовка таблицы
+        table=pt.PrettyTable() #Создание объекта класса PrettyTables
+        table.field_names=col #Присвоение объекту значений заголовка таблицы
         for i in range(A.shape[0]):
-            table0.add_row(A[i]) # Построчное формирование таблицы из значений матрицы A
+            table.add_row(A[i]) # Построчное формирование таблицы из значений матрицы A
     #else:
-    return table0
+    return table
 
     
 def main():
