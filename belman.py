@@ -28,13 +28,26 @@ def draw_table(A,flag):
     #else:
     return table
 
+def calculation (A):
+    result=[[]] #Формирование выходного списка: [[матрица B iго шага, str], ...]
+    B=np.zeros((A.shape[0],A.shape[0]+2)) #Формирование второй матрицы на основе первой
+    for i in reversed(range(A.shape[0])): #Решение начинается с конца; кол-во шагов равно кол-ву строк во входной матрице А????????????
+        if i==(A.shape[0]-1): #первая итерация отличается отпоследующих
+            string = 'J'+str(i+1)+'(S'+str(i)+') = max(F'+str(i+1)+'(U'+str(i+1)+'))    0<=U'+str(i+1)+'<=S'+str(i) #формирование строки
+            
+            #result[A.shape[0]-1-i].append(string)
+    return result
+
+
     
 def main():
     A=input_data()    
     #print(A)
     col=draw_table(A,0)
-    table=draw_table(A,0)
-    print (table)
+    i=calculation(A)
+    print (A)
+    print (i)
+
 
 if __name__ == '__main__':
     main()
