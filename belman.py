@@ -26,20 +26,19 @@ def draw_table(A,flag):
         for i in range(A.shape[0]):
             table.add_row(A[i]) # Построчное формирование таблицы из значений матрицы A
     else:
-        table=[];
-        for item in A:
-            col=['U\\S']
-            B=item[1]
-            for row in B:
+        table=[]; #Формирорование выхожного списка таблиц
+        for item in A: #Перебираем элементы входной матрцы
+            col=['U\\S'] #Создание заголовков таблицы
+            B=item[1] #Вытаскиваем итоговую матрцу
+            for row in B: # Перебор каждой строки итоговой матрицы
                 col.append(str(row[0]))
             col.append('J(S)')
             col.append('Uo')
-            #print(col)
             table_i=pt.PrettyTable()
             table_i.field_names=col
             for row in B:
-                table_i.add_row(row)
-            table.append(table_i)
+                table_i.add_row(row) #Создание итоговой таблицы
+            table.append(table_i) #Добавление итоговой таблицы в список таблиц
     return table
 
 def calculation (A):
@@ -63,16 +62,12 @@ def calculation (A):
 def main():
     A=input_data()
     table=draw_table(A,0)
-    ##print(A)
-    #B=calculation(A)
     B=np.array(calculation(A))
     table_result=draw_table(B,1)
     print(table)
     for i in range(B.shape[0]):
         print(B[i][0])
         print(table_result[i])
-    #for table in table_result:
-        #print(table)
 
 
 if __name__ == '__main__':
