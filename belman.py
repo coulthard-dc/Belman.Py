@@ -25,35 +25,51 @@ def draw_table(A,flag):
         table.field_names=col #Присвоение объекту значений заголовка таблицы
         for i in range(A.shape[0]):
             table.add_row(A[i]) # Построчное формирование таблицы из значений матрицы A
-    #else:
+    else:
+        table=[];
+        for item in A:
+            col=['U\\S']
+            B=item[1]
+            for row in B:
+                col.append(str(row[0]))
+            col.append('J(S)')
+            col.append('Uo')
+            #print(col)
+            table_i=pt.PrettyTable()
+            table_i.field_names=col
+            for row in B:
+                table_i.add_row(row)
+            table.append(table_i)
     return table
 
 def calculation (A):
-    result=[[]] #Формирование выходного списка: [[матрица B iго шага, str], ...]
+    result=[] #Формирование выходного списка: [[матрица B iго шага, str], ...]
     B=np.zeros((A.shape[0],A.shape[0]+3)) #Формирование второй матрицы на основе первой
-    for i in range(B.shape[0]):
+    for i in range(B.shape[0]): #Заполнение первого столбца выходной матрциы
         B[i][0]=A[i][0]
-
     for i in reversed(range(A.shape[1]-1)): #Решение начинается с конца; кол-во шагов равно кол-ву столбоцов F в матрице A
         if i==(A.shape[1]-2): #первая итерация отличается отпоследующих
             string = 'J'+str(i+1)+'(S'+str(i)+') = max(F'+str(i+1)+'(U'+str(i+1)+'))    0<=U'+str(i+1)+'<=S'+str(i) #формирование строки
             for j in range(A.shape[0]):
-                #print(i)
-                B[j][j+1]=A[j][i+1]
-            #print(B)            
-            result[A.shape[1]-2-i].append(string)
-            result[A.shape[1]-2-i].append(B)
+                B[j][j+1]=A[j][i+1] #Заполнение диагонали выходной матрицы
+            result.append([string,B])
+        else:
+            sting = 'J' +str(i+1)+'(S'+str(i)+') = max(F'+str(i+1)+'(U'+str(i+1)+'+J'+str(i+2)+'(S'+str(i-1)+'-U'+str(i)+'))    0<=U'+str(i+1)+'<=S'+str(i)
+            result.append([sting,B])
     return result
 
 
     
 def main():
-    A=input_data()    
-    #print(A)
-    col=draw_table(A,0)
-    i=calculation(A)
-    print (A)
-    print (i)
+    A=input_data()
+    table=draw_table(A,0)
+    ##print(A)
+    B=calculation(A)
+    print(B)
+    table_result=draw_table(B,1)
+    #print(table)
+    #for table in table_result:
+        #print(table)
 
 
 if __name__ == '__main__':
