@@ -64,10 +64,13 @@ def main():
     A=input_data()
     table=draw_table(A,0)
     ##print(A)
-    B=calculation(A)
-    print(B)
+    #B=calculation(A)
+    B=np.array(calculation(A))
     table_result=draw_table(B,1)
-    #print(table)
+    print(table)
+    for i in range(B.shape[0]):
+        print(B[i][0])
+        print(table_result[i])
     #for table in table_result:
         #print(table)
 
