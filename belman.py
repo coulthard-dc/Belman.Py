@@ -30,12 +30,19 @@ def draw_table(A,flag):
 
 def calculation (A):
     result=[[]] #Формирование выходного списка: [[матрица B iго шага, str], ...]
-    B=np.zeros((A.shape[0],A.shape[0]+2)) #Формирование второй матрицы на основе первой
-    for i in reversed(range(A.shape[0])): #Решение начинается с конца; кол-во шагов равно кол-ву строк во входной матрице А????????????
-        if i==(A.shape[0]-1): #первая итерация отличается отпоследующих
+    B=np.zeros((A.shape[0],A.shape[0]+3)) #Формирование второй матрицы на основе первой
+    for i in range(B.shape[0]):
+        B[i][0]=A[i][0]
+
+    for i in reversed(range(A.shape[1]-1)): #Решение начинается с конца; кол-во шагов равно кол-ву столбоцов F в матрице A
+        if i==(A.shape[1]-2): #первая итерация отличается отпоследующих
             string = 'J'+str(i+1)+'(S'+str(i)+') = max(F'+str(i+1)+'(U'+str(i+1)+'))    0<=U'+str(i+1)+'<=S'+str(i) #формирование строки
-            
-            #result[A.shape[0]-1-i].append(string)
+            for j in range(A.shape[0]):
+                #print(i)
+                B[j][j+1]=A[j][i+1]
+            #print(B)            
+            result[A.shape[1]-2-i].append(string)
+            result[A.shape[1]-2-i].append(B)
     return result
 
 
