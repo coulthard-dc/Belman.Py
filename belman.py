@@ -16,7 +16,7 @@ def input_data():
     A=np.transpose(A) #Транспонирование матрицы A
     return A
 
-def draw_table(A,flag):
+def creating_table(A,flag):
     if flag == 0: #Флаг нужен для определения типа таблицы (всего 2 таблицы)
         col=['Бюджет U'] #Формирование списка заголовков таблицы 
         for i in range(A.shape[1]-1):
@@ -61,9 +61,9 @@ def calculation (A):
     
 def main():
     A=input_data()
-    table=draw_table(A,0)
+    table=creating_table(A,0)
     B=np.array(calculation(A))
-    table_result=draw_table(B,1)
+    table_result=creating_table(B,1)
     print(table)
     for i in range(B.shape[0]):
         print(B[i][0])
