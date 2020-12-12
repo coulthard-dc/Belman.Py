@@ -15,7 +15,12 @@ def creating_table(A,flag):
         table=[]; #Формирорование выхожного списка таблиц
         for item in A: #Перебираем элементы входной матрцы
             col=['U\\S'] #Создание заголовков таблицы
+            J=item[2]
             B=item[1] #Вытаскиваем итоговую матрцу
+            B=[list(row) for row in B]
+            for i in range(len(B)):
+                print (J[i])
+                B[i].append(str(J[i]))
             for row in B: # Перебор каждой строки итоговой матрицы
                 col.append(str(row[0]))
             col.append('J(S)')
