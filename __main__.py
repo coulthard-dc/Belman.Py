@@ -6,8 +6,8 @@ from modules.creating_table import creating_table
 
 
 def main():
-    #A = input_data()
-    A=[[0,0,0,0,0],[20,7,6,14,14],[40,23,23,21,20],[60,31,30,34,35]]
+    A = input_data()
+    #A=[[0,0,0,0,0],[20,7,6,14,14],[40,23,23,21,20],[60,31,30,34,35]]
     A=np.array(A)
     table = creating_table(A,0)
     B = np.array(calculation(A))
