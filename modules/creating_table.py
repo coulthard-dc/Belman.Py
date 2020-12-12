@@ -20,7 +20,6 @@ def creating_table(A,flag):
             B=A[i][1] #Вытаскиваем итоговую матрцу
             B=[list(row) for row in B]
             for j in range(len(B)):
-                print (J[j])
                 B[j].append(str(J[j]))
             for row in B: # Перебор каждой строки итоговой матрицы
                 col.append(str(row[0]))

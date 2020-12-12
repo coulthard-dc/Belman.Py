@@ -37,7 +37,6 @@ def calculation (A):
                         cell_tmp.append(int(tmp[k][0]))
                 cell.append((cell_tmp))
                 cell_tmp=[]
-                print (cell)
             B=np.hstack((tmp,B))
             sting = 'J' +str(i+1)+'(S'+str(i)+') = max(F'+str(i+1)+'(U'+str(i+1)+'+J'+str(i+2)+'(S'+str(i-1)+'-U'+str(i)+'))    0<=U'+str(i+1)+'<=S'+str(i)
             result.append([sting,B,cell])
