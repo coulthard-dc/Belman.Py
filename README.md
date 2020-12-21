@@ -12,7 +12,7 @@
 
 <pre>
 	pip install prettytable
-	pip install numpy == 1.19.3
+	pip install numpy==1.19.3
 </pre>
 
 Для корректной работы на платформе Windows требуется пакет NumPy версии 1.19.3.
